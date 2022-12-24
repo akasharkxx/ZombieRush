@@ -1,9 +1,6 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Pool;
+using Redcode.Pools;
 
 namespace ZombieRush
 {
@@ -15,7 +12,8 @@ namespace ZombieRush
         private Rigidbody _rigidBody;
         private float _bulletSpeed = 1f;
 
-        private IObjectPool<Bullet> _pool;
+        //private IObjectPool<Bullet> _pool;
+        private Pool<Bullet> _bulletPool;
         private Tween returnToPoolTween;
 
         internal Transform Transform { get; private set; }
@@ -27,9 +25,14 @@ namespace ZombieRush
             Transform = transform;
         }
 
-        internal void SetPool(IObjectPool<Bullet> pool)
+        //internal void SetPool(IObjectPool<Bullet> pool)
+        //{
+        //    _pool = pool;
+        //}
+
+        internal void SetPool(Pool<Bullet> pool)
         {
-            _pool = pool;
+            _bulletPool = pool;
         }
 
         internal void Init(Vector3 startPosition, float bulletSpeed = 1f)
@@ -51,6 +54,7 @@ namespace ZombieRush
 
         private void OnCollisionEnter(Collision collision)
         {
+            if(returnToPoolTween != null) { returnToPoolTween.Kill(); }
             ReturnToPool();
         }
 
@@ -60,7 +64,8 @@ namespace ZombieRush
             trailRenderer.emitting = false;
             _rigidBody.velocity = Vector3.zero;
             Transform.position = _startPosition;
-            _pool.Release(this);
+            //_pool.Release(this);
+            _bulletPool.Take(this);
         }
     }
 }

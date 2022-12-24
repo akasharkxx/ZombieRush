@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZombieRush
@@ -22,6 +20,15 @@ namespace ZombieRush
         #endregion
 
         [SerializeField] internal Transform playerTransform;
+
+        [SerializeField] internal ScoreHandler scoreHandler;
+
+        internal Vector2 playerInput;
+
+        internal void EnemyDied(int someId = 0)
+        {
+
+        }
     }
 }
 

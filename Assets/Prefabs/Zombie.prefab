@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 9009485613655363614}
   m_Layer: 7
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,7 +282,7 @@ NavMeshAgent:
   m_Acceleration: 6
   avoidancePriority: 50
   m_AngularSpeed: 200
-  m_StoppingDistance: 2
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -303,12 +303,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _movementSpeed: 10
-  _rotateSpeed: 10
+  _movementSpeed: 3.5
+  _rotateSpeed: 200
   _rotator: {fileID: 9009485613399229869}
   _model: {fileID: 9009485613399229869}
   _maxHealth: 30
-  _damageToPlayer: 10
+  _damageToPlayer: 15
   meshRenderers:
   - {fileID: 9009485612264863503}
   - {fileID: 9009485612932483911}
